@@ -15,9 +15,20 @@ Thank you.
 <?php session_start(); 
 
 // CONFIG
+$is_local = FALSE; // this will bypass log in for local usage.
+$_SESSION['is_local'] = $is_local;
+
 $pageList = array(
     "PHP Projects" => "php"
 );
+
+// Log In Redirect
+if ($_SESSION['is_local'] !== TRUE) {
+    if (!isset($_SESSION['loggedin'])) {
+        header("Location: ./user/login.php");
+        exit;
+    }
+}
 
 $_SESSION['404_MSG'] = null;
 
