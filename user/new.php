@@ -40,7 +40,7 @@ if (isset($_SESSION['newAccountRefill'])) {
 $createAccount_errorM;
 
 if (isset($_SESSION['createAccount_errorM'])) {
-    $login_errorM = $_SESSION['createAccount_errorM'];
+    $createAccount_errorM = $_SESSION['createAccount_errorM'];
 }
 
 ?>
