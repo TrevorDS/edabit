@@ -9,6 +9,19 @@ function createAccountErrorMessage($msg) {
 
 if ($_POST) {
     
+    // Log Out
+    if (isset($_POST['logout'])) {
+        
+        $_SESSION['loggedin'] = null;
+        $_SESSION['username'] = null;
+        $_SESSION['email'] = null;
+        $_SESSION['joindate'] = null;
+        
+        header("Location: login.php");
+        exit;
+        
+    }
+    
     // Database Log In INFO
     /*
      * This is NOT stored on Github (nice try hackers! ;P )
@@ -60,20 +73,16 @@ if ($_POST) {
             // They successfully logged in (correct password - w/ hashed)
             if ($passMatch === TRUE) {
                 
+                $conn->close();
+                
                 loginErrorMessage(null);
                 
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['joindate'] = $row['joindate'];
                 
-                echo "<h1>Account Information:</h1>";
-                echo "<p>Welcome, " . $row['username'] . "</p>";
-                echo "userID: " . $row['userID'] . "<br>";
-                echo "username: " . $row['username'] . "<br>";
-                echo "password (hashed): " . $row['password'] . "<br>";
-                echo "email: " . $row['email'] . "<br>";
-                echo "joindate: " . $row['joindate'] . "<br>";
-                
+                header("Location: login.php");
                 exit;
                 
             }

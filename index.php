@@ -72,6 +72,13 @@ if ($_POST) {
     }
 }
 
+// Vars
+$username = "???";
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,7 +101,22 @@ if ($_POST) {
                padding-bottom: 1.5em;
                width: 30em;
                margin: auto;
+               margin-top: 0;
+           }
+           #logout_bg {
+               background-color: rgba(0, 0, 0, 0.9);
+               border: 3px lightgray solid;
+               border-radius: 3.5%;
+               padding-top: 0.25em;
+               padding-bottom: 0.25em;
+               padding-left: 1em;
+               padding-right: 1em;
+               width: fit-content;
+               margin: auto;
                margin-top: 2.5em;
+               margin-bottom: 0;
+               margin-right: 0.5em;
+               text-align: right;
            }
            #picOfMe {
                width: 20em;
@@ -104,6 +126,15 @@ if ($_POST) {
          </style>
     </head>
     <body>
+        
+        <div id='logout_bg'>
+            <h3 style="margin-bottom: 0.5em; margin-top: 0;">Welcome back, <?= $username ?></h3>
+            
+            <form action="user/auth.php" method="POST" style="margin-bottom: 0em;">
+                <input type="submit" name="logout" value="Log Out" />
+            </form>
+        </div>
+        
         <div id='bg'>
             <h1>TrevorDS's Edabit Portfolio</h1>
             
@@ -118,5 +149,6 @@ if ($_POST) {
                 ?>
             </form>
         </div>
+        
     </body>
 </html>

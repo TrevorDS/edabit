@@ -52,7 +52,7 @@ if (isset($_SESSION['createAccount_errorM'])) {
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.79.0">
-        <title>Log In</title>
+        <title>Create Account</title>
         <!-- Bootstrap core CSS -->
         <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <!-- Custom styles for this template -->

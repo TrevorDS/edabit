@@ -1,5 +1,13 @@
 <?php session_start();
 
+// Log In Redirect
+if ($_SESSION['is_local'] !== TRUE) {
+    if (!isset($_SESSION['loggedin'])) {
+        header("Location: ../user/login.php");
+        exit;
+    }
+}
+
 // CONFIG
 $pageList = array(
     "Steps To Convert" => "stepsToConvert",
