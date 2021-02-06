@@ -5,14 +5,6 @@ DefaultType application/x-httpd-php
 # Fix sub-directory requests by allowing 'index' as a DirectoryIndex value
 DirectoryIndex index index.php
 
-# Force the domain to load with the www subdomain prefix
-# If the request doesn't start with www...
-RewriteCond %{HTTP_HOST}   !^www\.edabit.herokuapp\.com [NC]
-# And the site name isn't empty
-RewriteCond %{HTTP_HOST}   !^$
-# Finally rewrite the request: end of rules, don't escape the output, and force a 301 redirect
-RewriteRule ^/?(.*)         http://www.edabit.herokuapp.com/$1 [L,R,NE]
-
 #get rid of trailing slashes
-RewriteCond %{HTTP_HOST} ^(www.)?edabit.herokuapp\.com$ [NC]
+RewriteCond %{HTTP_HOST} edabit.herokuapp\.com$ [NC]
 RewriteRule ^(.+)/$ http://%{HTTP_HOST}/$1 [R=301,L]
