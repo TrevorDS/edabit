@@ -6,7 +6,7 @@ RewriteEngine on
 # Put the rest of your rewrite rules here
 # REMOVE WWW & FORCE HTTPS
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [OR]
-RewriteCond %{https} off
+RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://example.com/$1 [R=301,L]
 
 # REMOVE TRAILING SLASH
