@@ -1,18 +1,7 @@
 RewriteEngine on
 
+RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+RewriteRule ^ /%1 [NC,L,R]
 
-
-
-# Put the rest of your rewrite rules here
-# REMOVE WWW & FORCE HTTPS
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [OR]
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://edabit.herokuapp.com/$1 [R=301,L]
-
-# REMOVE TRAILING SLASH
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301] 
-
-# REMOVE PHP EXTENSION if there's no file with this name
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)\.php$ /$1 [NC,L,R=301]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php  [NC,L]
