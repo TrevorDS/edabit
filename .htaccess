@@ -13,7 +13,15 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
 # Put the rest of your rewrite rules here
-RewriteBase /
-RewriteRule ^(.+)\.php$ /$1 [R,L]
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*?)/?$ /$1.php [NC,END]
+# File exists but has a trailing slash
+# https://stackoverflow.com/questions/21417263/htaccess-add-remove-trailing-slash-from-url
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^/?(.*)/+$ /$1 [R=302,L,QSA]
+
+# ok. It will still find the file but relative assets won't load
+# e.g. page: /landing/  -> assets/js/main.js/main
+# that's we have the rules above.
+RewriteCond %{REQUEST_FILENAME} !\.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^/?(.*?)/?$ $1.php
