@@ -13,9 +13,5 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Put the rest of your rewrite rules here
 # Remove file exstentions from address bar
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php [NC,L] 
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*[^/])$ /$1/ [L,R]
