@@ -18,9 +18,6 @@ if ($_POST) {
         $_SESSION['$createAccount_errorM'] = null;
     }
 }
-elseif (!$_POST) {
-    $_SESSION['$createAccount_errorM'] = null;
-}
 
 // Check if page needs to re-enter user input data
 $temp_uname = "";

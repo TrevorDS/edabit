@@ -13,10 +13,6 @@ if (isset($_SESSION['loggedin'])) {
     exit;
 }
 
-if (!$_POST) {
-    $_SESSION['login_errorMessage'] = null;
-}
-
 // Vars
 $login_errorM;
 
