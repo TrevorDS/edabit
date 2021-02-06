@@ -1,10 +1,5 @@
-RewriteEngine On
+RewriteEngine on
 
-# Process all files as PHP by default
-DefaultType application/x-httpd-php
-# Fix sub-directory requests by allowing 'index' as a DirectoryIndex value
-DirectoryIndex index index.php
-
-#get rid of trailing slashes
-RewriteCond https://%{HTTP_HOST}\.edabit.herokuapp\.com$ [NC]
-RewriteRule ^(.+)/$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^(.+)\.php$ /$1 [R,L]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*?)/?$ /$1.php [NC,END]
