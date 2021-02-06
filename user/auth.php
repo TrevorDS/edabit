@@ -194,6 +194,20 @@ if ($_POST) {
                 
             }
             
+        } else {
+            
+            createAccountErrorMessage("Account \"$username\" already exists.");
+            
+            $_SESSION['newAccountRefill'] = array(
+                "username" => "",
+                "email" => $email,
+                "password" => $password,
+                "password2" => $password2,
+            );
+            
+            header("Location: new.php");
+            exit;
+            
         }
 
         $conn->close();

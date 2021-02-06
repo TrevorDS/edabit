@@ -111,7 +111,7 @@ if (isset($_SESSION['username'])) {
                padding-bottom: 0.25em;
                padding-left: 1em;
                padding-right: 1em;
-               width: fit-content;
+               width: 20em;
                margin: auto;
                margin-top: 2.5em;
                margin-bottom: 0;
