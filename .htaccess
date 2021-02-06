@@ -1,28 +1,4 @@
 RewriteEngine On
 
-
-
-# Unless directory, remove trailing slash
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^/]+)/$ $1 [R=301,L]
-
-# Redirect external .php requests to extensionless url
-RewriteCond %{REQUEST_METHOD} !POST
-RewriteCond %{THE_REQUEST} /.+?\.php [NC]
-RewriteRule ^(.+?)\.php$ /$1 [R=301,L,NE]
-
-# Resolve .php file for extensionless php urls
-RewriteRule ^([^/.]+)$ $1.php [L]
-
-
-
-# Remove Index.php from URL
-RewriteRule (?:^|/)index\.php$  / [R=301,L]
-
-
-
-# Protect the htaccess file
-<files .htaccess>
-order allow,deny
-deny from all
-</files>
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
