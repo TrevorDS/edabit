@@ -7,4 +7,4 @@ DirectoryIndex index index.php
 
 #get rid of trailing slashes
 RewriteCond %{HTTP_HOST} edabit.herokuapp\.com$ [NC]
-RewriteRule ^(.+)/$ http://%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^(.+)/$ https://%{HTTP_HOST}/$1 [R=301,L]
