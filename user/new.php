@@ -15,7 +15,7 @@ if (isset($_SESSION['loggedin'])) {
 
 if ($_POST) {
     if (isset($_POST['createAccount'])) {
-        $_SESSION['$createAccount_errorM'] = null;
+        $_SESSION['createAccount_errorM'] = null;
     }
 }
 
@@ -39,8 +39,8 @@ if (isset($_SESSION['newAccountRefill'])) {
 // Vars
 $createAccount_errorM;
 
-if (isset($_SESSION['$createAccount_errorM'])) {
-    $login_errorM = $_SESSION['$createAccount_errorM'];
+if (isset($_SESSION['createAccount_errorM'])) {
+    $login_errorM = $_SESSION['createAccount_errorM'];
 }
 
 ?>
