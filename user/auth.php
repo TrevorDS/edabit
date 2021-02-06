@@ -75,10 +75,18 @@ if ($_POST) {
                 echo "joindate: " . $row['joindate'] . "<br>";
                 
             }
-          }
-          
-          exit; // temp - for debugging
-          
+            // Wrong Password
+            else {
+                
+                $conn->close();
+            
+                loginErrorMessage("Invalid Log-In.");
+
+                header("Location: login.php");
+                exit;
+                
+            }
+          }   
         } 
         // They do NOT have an account
         else {
