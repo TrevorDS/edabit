@@ -13,15 +13,37 @@ if (isset($_SESSION['loggedin'])) {
     exit;
 }
 
-if (!$_POST) {
-    $_SESSION['login_errorMessage'] = null;
+if ($_POST) {
+    if (isset($_POST['createAccount'])) {
+        $_SESSION['$createAccount_errorM'] = null;
+    }
+}
+elseif (!$_POST) {
+    $_SESSION['$createAccount_errorM'] = null;
+}
+
+// Check if page needs to re-enter user input data
+$temp_uname = "";
+$temp_email = "";
+$temp_pwd = "";
+$temp_pwd2 = "";
+
+if (isset($_SESSION['newAccountRefill'])) {
+    
+    $temp_uname = $_SESSION['newAccountRefill']['username'];
+    $temp_email = $_SESSION['newAccountRefill']['email'];
+    $temp_pwd = $_SESSION['newAccountRefill']['password'];
+    $temp_pwd2 = $_SESSION['newAccountRefill']['password2'];
+    
+    $_SESSION['newAccountRefill'] = null;
+    
 }
 
 // Vars
-$login_errorM;
+$createAccount_errorM;
 
-if (isset($_SESSION['login_errorMessage'])) {
-    $login_errorM = $_SESSION['login_errorMessage'];
+if (isset($_SESSION['$createAccount_errorM'])) {
+    $login_errorM = $_SESSION['$createAccount_errorM'];
 }
 
 ?>
@@ -77,26 +99,17 @@ if (isset($_SESSION['login_errorMessage'])) {
                     if (isset($login_errorM)) {
                 ?>
                 
-                <p><?= $login_errorM ?></p>
+                <p><?= $createAccount_errorM ?></p>
                 
                 <?php
                     }
                 ?>
-                <h1 class="h3 mb-3 fw-normal">Enter your credentials OR create an account</h1>
-                <label for="inputUsername" class="visually-hidden">Username</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="uname" required autofocus>
-                <label for="inputPassword" class="visually-hidden">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pwd" required>
-<!--                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>-->
-                <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Log in</button>
-            </form>
-            
-            <form id="createAccountForm" action="new.php" method="POST">
-                <button class="w-100 btn btn-lg btn-danger" type="submit" name="createAccount" value="createAccount">Create Account</button>
+                <h1 class="h3 mb-3 fw-normal">Enter your credentials to create a new account</h1>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username (3-25 characters)" name="uname" minlength="3" maxlength="25" value="<?= $temp_uname ?>" required autofocus> <br>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email (must be valid)" name="email" minlength="1" maxlength="50" value="<?= $temp_email ?>" required> <br>
+                <input type="password" id="inputPassword" style="margin-bottom: 0;" class="form-control" placeholder="Password (3-25 characters)" name="pwd" minlength="3" maxlength="25" value="<?= $temp_pwd ?>" required>
+                <input type="password" id="inputPassword2" style="margin-bottom: 0;" class="form-control" placeholder="Re-Enter Password (Must match)" name="pwd2" minlength="3" maxlength="25" value="<?= $temp_pwd2 ?>" required> <br>
+                <button class="w-100 btn btn-lg btn-danger" type="submit" name="createAccount">Create Account</button>
             </form>
             
             <p class="mt-5 mb-3">&copy; 2017-2021</p>
