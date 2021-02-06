@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Potta One', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+}
+@font-face {
+    font-family: 'Yusei Magic', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+}
+
+h1, h2, h3, h4, h5, h6, h7, h8 {
+    font-family: 'Potta One', cursive;
+}
+
+body {
+    font-family: 'Yusei Magic', sans-serif;
+    text-align: center;
+}
