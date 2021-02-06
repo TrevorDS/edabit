@@ -93,7 +93,7 @@ if (isset($_SESSION['createAccount_errorM'])) {
             <form action="auth.php" method="POST">
                 <img id="loginBGImg" class="mb-4" src="../images/logo_main.png" alt="" width="250" height="250">
                 <?php
-                    if (isset($login_errorM)) {
+                    if (isset($createAccount_errorM)) {
                 ?>
                 
                 <p><?= $createAccount_errorM ?></p>
