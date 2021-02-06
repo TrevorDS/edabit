@@ -1,10 +1,10 @@
 RewriteEngine on
 
+# Force HTTPS
+RewriteCond %{HTTPS} off 
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # Remove file exstentions from address bar
 RewriteRule ^(.+)\.php$ /$1 [R,L]
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.*?)/?$ /$1.php [NC,END]
-
-# Force HTTPS
-RewriteCond %{HTTPS} off 
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
