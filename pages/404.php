@@ -33,7 +33,7 @@
                 echo "<p>The web page \"" . $_SESSION['404_MSG'] . "\" was not found.</p>";
             }
             ?>
-            <form action="index.php" method="POST">
+            <form action="../index.php" method="POST">
                 <input type="submit" name="transfer" value="Back to Home" />
             </form>
         </div>

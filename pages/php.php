@@ -101,7 +101,7 @@ if ($_POST) {
             </form>
         </div>
         <div id='buttonDivBg'>
-            <form action="index.php" method="POST">
+            <form action="../index.php" method="POST">
                 <input type="submit" name="transfer" value="Back to Home" />
             </form>
         </div>

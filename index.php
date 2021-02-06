@@ -7,8 +7,10 @@ If you believe that something is copyrighted OR you own the I.P.,
 please contact Trevor at: trevordsherrill@gmail.com
 Thank you.
 [Credits]
-- Background Image | BY: TeaHub (Unknown Publisher) | LINK: https://www.teahub.io/photos/full/73-739794_matrix-wallpaper-blue.jpg
+- Background Image | BY: TeaHub (*Unknown Publisher) | LINK: https://www.teahub.io/photos/full/73-739794_matrix-wallpaper-blue.jpg
 -
+
+*Unknown Publisher (was found on google and I could not find a traceback to original)
 -->
 <?php session_start(); 
 
@@ -36,7 +38,7 @@ if ($_POST) {
         }
         
         // Page Exists
-        $file = "./" . $location . ".php";
+        $file = "./pages/" . $location . ".php";
         $fileExists = file_exists($file);
         
         if($fileExists === true) {
