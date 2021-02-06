@@ -34,7 +34,7 @@ if ($_POST) {
             
             errorMessage("Our database(s) are down. Please try again later.");
             
-            header("login.php");
+            header("Location: login.php");
             exit;
             
         }
@@ -79,7 +79,7 @@ if ($_POST) {
             
             errorMessage("Account does not exist.");
             
-            header("login.php");
+            header("Location: login.php");
             exit;
             
         }
