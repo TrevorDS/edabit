@@ -74,6 +74,8 @@ if ($_POST) {
                 echo "email: " . $row['email'] . "<br>";
                 echo "joindate: " . $row['joindate'] . "<br>";
                 
+                exit;
+                
             }
             // Wrong Password
             else {
