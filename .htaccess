@@ -7,7 +7,7 @@ RewriteEngine on
 # REMOVE WWW & FORCE HTTPS
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [OR]
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://example.com/$1 [R=301,L]
+RewriteRule ^(.*)$ https://edabit.herokuapp.com/$1 [R=301,L]
 
 # REMOVE TRAILING SLASH
 RewriteCond %{REQUEST_FILENAME} !-d
