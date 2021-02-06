@@ -1,18 +1,18 @@
-Options +MultiViews
 RewriteEngine on
 
-# If we receive a forwarded http request from a proxy...
-RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
 
-# ...or just a plain old http request directly from the client
-RewriteCond %{HTTP:X-Forwarded-Proto} =""
-RewriteCond %{HTTPS} !=on
-
-# Redirect to https version
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
 # Put the rest of your rewrite rules here
+# REMOVE WWW & FORCE HTTPS
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [OR]
+RewriteCond %{https} off
+RewriteRule ^(.*)$ https://example.com/$1 [R=301,L]
+
+# REMOVE TRAILING SLASH
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^(.*)/$ /$1 [L,R=301] 
+
+# REMOVE PHP EXTENSION if there's no file with this name
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)\.php$ /$1 [NC,L,R=301]
