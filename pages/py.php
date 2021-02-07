@@ -10,7 +10,7 @@ if ($_SESSION['is_local'] !== TRUE) {
 
 // CONFIG
 $pageList = array(
-    "Convert Minutes Into Seconds" => "convertMinutesIntoSeconds"
+    //"Convert Minutes Into Seconds" => "convertMinutesIntoSeconds"
 );
 
 $_SESSION['404_MSG'] = null;
