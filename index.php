@@ -15,7 +15,7 @@ Thank you.
 <?php session_start(); 
 
 // CONFIG
-$is_local = TRUE; // this will bypass log in for local usage.
+$is_local = FALSE; // this will bypass log in for local usage.
 $_SESSION['is_local'] = $is_local;
 
 $pageList = array(
