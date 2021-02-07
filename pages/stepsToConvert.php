@@ -164,7 +164,6 @@ if (isset($_POST['downloadFile'])) {
     <head>
         <meta charset="UTF-8">
         <title>Project File: <?= $file ?></title>
-        <link rel='stylesheet' href='css/style.css' />
         <style>
             #topMarginDiv {
                 margin-top: 3.5em;

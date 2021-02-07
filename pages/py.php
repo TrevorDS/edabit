@@ -1,35 +1,17 @@
-<!-- 
-This webpage was Designed, Coded, and belongs solely to TrevorDS (Sherrill)
-Any other I.P. will credited below in the credits.
-(All images, code snippets, etc. are found on google or royalty free
-websites that do not require O.P. permissions.) 
-If you believe that something is copyrighted OR you own the I.P., 
-please contact Trevor at: trevordsherrill@gmail.com
-Thank you.
-[Credits]
-- Background Image | BY: TeaHub (*Unknown Publisher) | LINK: https://www.teahub.io/photos/full/73-739794_matrix-wallpaper-blue.jpg
--
-
-*Unknown Publisher (was found on google and I could not find a traceback to original)
--->
-<?php session_start(); 
-
-// CONFIG
-$is_local = TRUE; // this will bypass log in for local usage.
-$_SESSION['is_local'] = $is_local;
-
-$pageList = array(
-    "PHP Projects" => "php",
-    "Python Projects" => "py"
-);
+<?php session_start();
 
 // Log In Redirect
 if ($_SESSION['is_local'] !== TRUE) {
     if (!isset($_SESSION['loggedin'])) {
-        header("Location: ./user/login.php");
+        header("Location: ../user/login.php");
         exit;
     }
 }
+
+// CONFIG
+$pageList = array(
+    "Convert Minutes Into Seconds" => "convertMinutesIntoSeconds"
+);
 
 $_SESSION['404_MSG'] = null;
 
@@ -50,7 +32,7 @@ if ($_POST) {
         }
         
         // Page Exists
-        $file = "./pages/" . $location . ".php";
+        $file = "./" . $location . ".php";
         $fileExists = file_exists($file);
         
         if($fileExists === true) {
@@ -86,7 +68,7 @@ if (isset($_SESSION['username'])) {
     <head>
         <meta charset="UTF-8">
         <title>TrevorDS's Edabit Profile</title>
-        <link rel='stylesheet' href='css/style.css' />
+        <link rel='stylesheet' href='../css/style.css' />
         <style>
            body {
                text-align: center;
@@ -102,7 +84,7 @@ if (isset($_SESSION['username'])) {
                padding-bottom: 1.5em;
                width: 30em;
                margin: auto;
-               margin-top: 0;
+               margin-top: 2.5em;
            }
            #logout_bg {
                background-color: rgba(0, 0, 0, 0.9);
@@ -119,10 +101,18 @@ if (isset($_SESSION['username'])) {
                margin-right: 0.5em;
                text-align: right;
            }
-           #picOfMe {
-               width: 20em;
-               height: 20em;
-               margin: 2em;
+           #buttonDivBg {
+               background-color: rgba(0, 0, 0, 0.9);
+               border: 3px lightgray solid;
+               border-radius: 3.5%;
+               padding-top: 1em;
+               padding-bottom: 1em;
+               width: 10em;
+               margin: auto;
+               margin-top: 1em;
+           }
+           #pFont {
+               
            }
          </style>
     </head>
@@ -137,17 +127,21 @@ if (isset($_SESSION['username'])) {
         </div>
         
         <div id='bg'>
-            <h1>TrevorDS's Edabit Portfolio</h1>
-            
-            <img id="picOfMe" src="images/me.jpg" alt="A Picture of Trevor, the website author." />
+            <h1><?php echo strtoupper(basename(__FILE__, ".php")); ?> Projects</h1>
 
-            <form action="index.php" method="POST">
+            <form action="<?php echo basename(__FILE__); ?>" method="POST">
                 <input type="hidden" name="redirectPage" value="redirectPage" />
                 <?php
                 foreach ($pageList as $key => $val) {
-                    echo "<h3>$key</h3><input type=\"submit\" name=\"$val\" value=\"$key\" /><br><br>";
+                    echo "<p id='pFont'>\"$key\" Project</p><input type=\"submit\" name=\"$val\" value=\"$key\" /><br><br>";
                 }
                 ?>
+            </form>
+        </div>
+        
+        <div id='buttonDivBg'>
+            <form action="../index.php" method="POST">
+                <input type="submit" name="transfer" value="Back to Home" />
             </form>
         </div>
         
