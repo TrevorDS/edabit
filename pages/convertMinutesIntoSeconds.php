@@ -73,7 +73,7 @@ function returnFromPython($var, $should_echo) {
     $output;
     $returnCode;
     
-    $pyReturn = shell_exec('python ../pycode/convertMinutesIntoSeconds.py ' . $var, $output, $returnCode);
+    $pyReturn = exec('python ../pycode/convertMinutesIntoSeconds.py ' . $var, $output, $returnCode);
     if ($should_echo === true) {
         printf('%d<br>', $returnCode);
     }
