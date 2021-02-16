@@ -26,8 +26,7 @@ $projectProblemLink = "https://edabit.com/challenge/FQyaaJx7orS7tiwz8";
 /*
  * - Problem Description: */
 $projectProblemDesc = (
-        "Write a function that takes an integer minutes and converts it to seconds. <br>"
-        . "*NOTE: THIS CODE DOES NOT PROPERLY DISPLAY ON HEROKU, AND I AM CURRENTLY UNABLE TO FIX IT ON HEROKU. TRY ON YOUR LOCAL MACHINE TO SEE IT IN ACTION!"
+        "Write a function that takes an integer minutes and converts it to seconds."
         );
 /* 
  * - Problem Author: */
@@ -74,7 +73,7 @@ function returnFromPython($var, $should_echo) {
     $output;
     $returnCode;
     
-    $pyReturn = exec('python ../pycode/convertMinutesIntoSeconds.py ' . $var, $output, $returnCode);
+    $pyReturn = exec("py ../pycode/convertMinutesIntoSeconds.py " . $var, $output, $returnCode);
     if ($should_echo === true) {
         printf('%d<br>', $returnCode);
     }
