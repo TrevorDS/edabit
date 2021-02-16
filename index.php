@@ -20,7 +20,7 @@ $_SESSION['is_local'] = $is_local;
 
 $pageList = array(
     "PHP Projects" => "php",
-    "Python Projects" => "py"
+    //"Python Projects" => "py"
 );
 
 // Log In Redirect
